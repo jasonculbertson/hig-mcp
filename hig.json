@@ -1,0 +1,7 @@
+{
+  "guidelines": {
+    "touch_targets": "Minimum 44x44 points",
+    "typography": "Minimum 11pt font size",
+    "accessibility": "Support Dynamic Type and VoiceOver"
+  }
+}
