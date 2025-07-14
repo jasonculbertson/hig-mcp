@@ -1,7 +1,660 @@
 {
-  "guidelines": {
-    "touch_targets": "Minimum 44x44 points",
-    "typography": "Minimum 11pt font size",
-    "accessibility": "Support Dynamic Type and VoiceOver"
+  "human_interface_guidelines": {
+    "platform": "iOS",
+    "version": "2025",
+    "sections": {
+      "principles": {
+        "clarity": {
+          "description": "Text is legible at every size, icons are precise and lucid, adornments are subtle and appropriate, and a sharpened focus on functionality motivates the design.",
+          "guidelines": [
+            "Use legible font sizes (minimum 11pt for body text).",
+            "Ensure icons are clear and recognizable at small sizes.",
+            "Avoid unnecessary visual clutter to maintain focus on content.",
+            "Prioritize functionality in design choices to enhance user understanding.",
+            "Use precise language and visuals to convey information efficiently."
+          ],
+          "best_practices": [
+            "Test legibility across different device sizes and lighting conditions.",
+            "Employ high-contrast elements for better visibility."
+          ]
+        },
+        "deference": {
+          "description": "The UI helps users understand and interact with the content, but never competes with it.",
+          "guidelines": [
+            "Use translucent or blurred backgrounds to emphasize content.",
+            "Minimize decorative elements that distract from primary actions.",
+            "Ensure UI elements support the content rather than overshadowing it.",
+            "Design interfaces that fade into the background, allowing content to shine.",
+            "Avoid overwhelming animations or effects that draw attention away from user tasks."
+          ],
+          "best_practices": [
+            "Incorporate subtle feedback mechanisms like haptic touch.",
+            "Balance UI density to prevent cognitive overload."
+          ]
+        },
+        "depth": {
+          "description": "Distinct visual layers and realistic motion convey hierarchy, impart vitality, and facilitate understanding.",
+          "guidelines": [
+            "Use shadows, layers, or depth effects to indicate hierarchy.",
+            "Incorporate subtle animations to guide user interactions.",
+            "Maintain consistent visual cues for navigation transitions.",
+            "Apply parallax effects sparingly to enhance immersion.",
+            "Ensure motion aligns with physical metaphors for intuitive interactions."
+          ],
+          "best_practices": [
+            "Animate transitions smoothly at 60fps for fluid experience.",
+            "Test depth cues in both light and dark modes."
+          ]
+        }
+      },
+      "accessibility": {
+        "dynamic_type": {
+          "description": "Support scalable text sizes to accommodate user preferences.",
+          "guidelines": [
+            "Use system fonts (e.g., SF Pro) with Dynamic Type support.",
+            "Allow text to scale from 11pt to larger sizes based on user settings.",
+            "Test layouts with the largest accessibility text sizes.",
+            "Adjust layouts dynamically to prevent clipping or overlap.",
+            "Provide options for users to customize text scaling independently."
+          ],
+          "best_practices": [
+            "Use Auto Layout constraints that adapt to text size changes.",
+            "Include accessibility audits in your testing process."
+          ]
+        },
+        "voiceover": {
+          "description": "Ensure all interactive elements are accessible via VoiceOver.",
+          "guidelines": [
+            "Add accessibility labels to buttons, icons, and controls.",
+            "Provide descriptive hints for non-obvious interactions.",
+            "Test VoiceOver navigation to ensure logical flow.",
+            "Group related elements for efficient screen reader navigation.",
+            "Use accessibility traits to define element types accurately."
+          ],
+          "best_practices": [
+            "Record and review VoiceOver sessions for usability.",
+            "Integrate accessibility from the design phase."
+          ]
+        },
+        "contrast": {
+          "description": "Maintain sufficient contrast for readability and accessibility.",
+          "guidelines": [
+            "Ensure minimum contrast ratio of 4.5:1 for normal text and 3:1 for large text.",
+            "Use system colors or high-contrast alternatives for UI elements.",
+            "Test UI in different lighting conditions and with inverted colors.",
+            "Support increased contrast settings in iOS.",
+            "Avoid relying solely on color for conveying information."
+          ],
+          "best_practices": [
+            "WCAG tools to verify contrast ratios.",
+            "Provide alternative text descriptions for color-coded information."
+          ]
+        }
+      },
+      "components": {
+        "buttons": {
+          "description": "Buttons initiate actions and should be clear and accessible.",
+          "guidelines": [
+            "Ensure buttons have a minimum touch target of 44x44 points.",
+            "Use clear, concise labels (e.g., 'Save' instead of 'Proceed to Save').",
+            "Provide visual feedback (e.g., highlight or animation) on tap.",
+            "Use consistent styling for primary, secondary, and destructive actions.",
+            "Support states like disabled with appropriate visuals.",
+            "Support different shapes like rounded rectangles for tactile feel.",
+            "Support SF Symbols for icon buttons.",
+            "Ensure buttons are grouped logically in forms or toolbars."
+          ],
+          "best_practices": [
+            "Test button interactions on physical devices for touch accuracy.",
+            "Use haptic feedback for button presses where appropriate."
+          ]
+        },
+        "navigation_bars": {
+          "description": "Navigation bars provide consistent access to app navigation.",
+          "guidelines": [
+            "Place primary navigation items in a bottom tab bar or top navigation bar.",
+            "Limit top navigation bar to avoid clutter (maximum 5 items).",
+            "Use standard icons (e.g., SF Symbols) for recognizable actions.",
+            "Include search bars or back buttons as needed.",
+            "Support large titles for hierarchical navigation.",
+            "Customize tint color to match app theme.",
+            "Ensure translucency adapts to scrolling content.",
+            "Provide title and subtitle for each view."
+          "best_practices": [
+            "Use UINavigationController for stack-based navigation.",
+            "Test for intuitive back gestures."
+          ]
+        },
+        "typography": {
+          "description": "Typography should be legible, hierarchical, and consistent.",
+          "guidelines": [
+            "Use SF Pro or system fonts for consistency.",
+            "Maintain minimum font size of 11pt for body text.",
+            "Establish clear hierarchy with font weights and sizes (e.g., bold for headings).",
+            "Use tracking and leading adjustments for better readability.",
+            "Support text styles like left alignment for body, center for titles."
+          "Support hyphenation and line breaking rules.",
+            "Avoid all-caps for long text.",
+            "Integrate with Dynamic Type scaling."
+          ],
+          "best_practices": [
+            "Use font descriptors for custom styling.",
+            "Preview text in different languages."
+          ]
+        }
+      },
+      "touch_targets": {
+        "description": "Interactive elements must be large enough for easy tapping.",
+        "guidelines": [
+          "Ensure minimum touch target size of 44x44 points for all interactive elements.",
+          "Space touch targets to prevent accidental taps (minimum 8pt spacing).",
+          "Test touch targets on smaller devices (e.g., iPhone SE).",
+          "Increase effective target area with hit testing.",
+          "Consider finger occlusion in placement."
+        ],
+        "best_practices": [
+          "Use debugging tools to visualize touch areas.",
+          "Gather user feedback on touch accuracy."
+        ]
+      },
+      "color": {
+        "description": "Use color to communicate hierarchy, impart vitality, and aid understanding. Colors should be consistent, adaptable, and accessible.",
+        "guidelines": [
+          "Use system colors for adaptability in light and dark modes.",
+          "Apply semantic colors (e.g., label, link, fill) for consistency.",
+          "Choose accent colors that reflect your app’s brand while ensuring accessibility.",
+          "Maintain sufficient contrast ratios (4.5:1 for text).",
+          "Support elevated contrast modes for users with visual impairments.",
+          "Use color to denote interactive states (e.g., blue for links).",
+          "Avoid using color alone to convey information; pair with icons or text.",
+          "Test colors for color blindness using simulators."
+        ],
+        "subsections": {
+          "system_colors": {
+            "description": "Predefined colors that adapt to the system appearance.",
+            "guidelines": [
+              "Use colors like systemBlue, systemRed for interactive elements.",
+              "Leverage semantic colors like labelColor for text.",
+              "Include systemBackground for backgrounds.",
+              "Use systemGroupedBackground for table views.",
+              "Adapt to dark mode with automatic variants."
+            ],
+            "examples": [
+              "systemBlue for default button tint.",
+              "systemGray for secondary text."
+            ]
+          },
+          "custom_colors": {
+            "description": "Define custom colors that work in both light and dark modes.",
+            "guidelines": [
+              "Use color assets with light and dark variants.",
+              "Test colors in different environments and modes.",
+              "Define colors in asset catalogs for easy management.",
+              "Use UIColor with resolved colors for traits.",
+              "Ensure custom palettes meet WCAG standards."
+            ],
+            "examples": [
+              "Brand primary color with hex #007AFF for light, adjusted for dark."
+            ]
+          },
+          "color_palettes": {
+            "description": "Recommended palettes and values.",
+            "guidelines": [
+              "Primary label: #000000 (light), #FFFFFF (dark).",
+              "Secondary label: #3C3C43 (light, 60% opacity).",
+              "Link: #007AFF."
+            ]
+          }
+        }
+      },
+      "images": {
+        "description": "Images convey information, illustrate concepts, and enhance the visual appeal of your app.",
+        "guidelines": [
+          "Use SF Symbols for standard icons to ensure consistency and scalability.",
+          "Provide images in multiple resolutions (@1x, @2x, @3x) for different devices.",
+          "Ensure images are accessible with alt text or labels.",
+          "Use vector formats (PDF or SVG) for scalability.",
+          "Avoid using images for text; use actual text for better accessibility.",
+          "Optimize image file sizes for performance.",
+          "Use template images for tinting with colors.",
+          "Support dark mode variants for images."
+        ],
+        "subsections": {
+          "icons": {
+            "description": "App icons and custom icons should be simple and recognizable.",
+            "guidelines": [
+              "Design app icons at 1024x1024 pixels.",
+              "Follow icon grid for alignment and balance.",
+              "Use bold, geometric shapes.",
+              "Avoid photography in icons.",
+              "Provide layered PSD for easy editing."
+            ],
+            "specifications": [
+              "Home screen icon: 180x180 @3x.",
+              "App Store icon: 1024x1024."
+            ]
+          },
+          "photos": {
+            "description": "Guidelines for displaying user photos or graphics.",
+            "guidelines": [
+              "Respect aspect ratios and use content modes like aspect fill.",
+              "Optimize for performance with lazy loading.",
+              "Use placeholders during loading.",
+              "Support pinch-to-zoom for detailed views.",
+              "Ensure photos are compressed without quality loss."
+            ]
+          }
+        }
+      },
+      "layout": {
+        "description": "Layout defines the spatial relationships between elements, ensuring consistency and adaptability across devices.",
+        "guidelines": [
+          "Use safe areas to avoid overlapping system UI.",
+          "Employ Auto Layout or SwiftUI for responsive designs.",
+          "Maintain consistent margins (e.g., 16pt minimum).",
+          "Support landscape and portrait orientations where appropriate.",
+          "Adapt layouts for different screen sizes and split views on iPad.",
+          "Use stack views for linear arrangements.",
+          "Align elements to baseline grids.",
+          "Provide adequate padding around content."
+        ],
+        "subsections": {
+          "grids": {
+            "description": "Use grids to align elements.",
+            "guidelines": [
+              "Align to an 8pt grid for consistency.",
+              "Use 4pt increments for finer details.",
+              "Ensure grid alignment in prototypes."
+            ]
+          },
+          "spacing": {
+            "description": "Proper spacing improves readability.",
+            "guidelines": [
+              "Use at least 8pt between elements.",
+              "Group related items with smaller spacing.",
+              "Increase spacing for touch targets.",
+              "Use system spacing constants in code."
+            ],
+            "measurements": [
+              "Standard margin: 16pt.",
+              "Section spacing: 28pt."
+            ]
+          }
+        }
+      },
+      "materials": {
+        "description": "Materials provide depth and realism through blurring and vibrancy effects.",
+        "guidelines": [
+          "Use system materials like thin, regular, thick for backgrounds.",
+          "Apply materials to create hierarchy and focus.",
+          "Ensure materials adapt to light and dark modes.",
+          "Combine with shadows for added depth.",
+          "Avoid overusing materials to prevent visual clutter.",
+          "Use UIBlurEffect for custom blurs.",
+          "Support vibrancy for text over blurred backgrounds."
+        ],
+        "subsections": {
+          "blur_effects": {
+            "description": "Blur underlying content to emphasize foreground.",
+            "guidelines": [
+              "Use UIBlurEffect for sidebars or overlays.",
+              "Choose styles like .systemUltraThinMaterial.",
+              "Test performance on older devices.",
+              "Layer materials for complex effects."
+            ]
+          },
+          "material_types": {
+            "description": "Types of materials available.",
+            "guidelines": [
+              "Ultra thin: Subtle blur.",
+              "Thick: Stronger separation."
+            ]
+          }
+        }
+      },
+      "typography_new": {
+        "description": "Typography communicates hierarchy, guides the eye, and ensures readability.",
+        "guidelines": [
+          "Use San Francisco (SF Pro) as the system font.",
+          "Support Dynamic Type for user-adjustable text sizes.",
+          "Limit font styles to maintain consistency.",
+          "Use appropriate line spacing (leading) for readability.",
+          "Align text appropriately (left for body, center for titles).",
+          "Adjust kerning for better letter spacing.",
+          "Use bold and italics sparingly for emphasis.",
+          "Support multiple languages with proper font fallback."
+        ],
+        "subsections": {
+          "text_styles": {
+            "description": "Predefined styles like headline, body, caption.",
+            "guidelines": [
+              "Use UIFontTextStyle or SwiftUI's .headline, .body.",
+              "Headline: 17pt bold.",
+              "Body: 17pt regular.",
+              "Caption: 12pt regular."
+            ],
+            "font_specifications": [
+              "Large Title: 34pt.",
+              "Title 1: 28pt."
+            ]
+          }
+        }
+      },
+      "writing": {
+        "description": "Writing should be clear, concise, and user-friendly.",
+        "guidelines": [
+          "Use simple language and short sentences.",
+          "Be consistent in tone (friendly, professional).",
+          "Capitalize properly (sentence case for buttons).",
+          "Localize content for different regions.",
+          "Avoid jargon; explain terms if necessary.",
+          "Use active voice for directness.",
+          "Provide context in alerts and messages.",
+          "Write inclusive and accessible language."
+        ],
+        "subsections": {
+          "labels": {
+            "description": "Button and UI labels.",
+            "guidelines": [
+              "Keep labels action-oriented (e.g., 'Delete' not 'Delete Item').",
+              "Limit to 1-2 words.",
+              "Use verbs for buttons."
+            ],
+            "examples": [
+              "Good: 'Save Changes'.",
+              "Bad: 'Click here to save your recent changes'."
+            ]
+          },
+          "errors": {
+            "description": "Error messages.",
+            "guidelines": [
+              "Provide helpful, non-technical explanations.",
+              "Suggest solutions.",
+              "Avoid blaming the user."
+            ],
+            "examples": [
+              "Good: 'Couldn't connect. Check your internet and try again.'.",
+              "Bad: 'Error 404'."
+            ]
+          }
+        }
+      },
+      "patterns": {
+        "description": "Patterns are common user flows and interactions in apps.",
+        "guidelines": [
+          "Follow standard patterns for familiarity.",
+          "Customize only when necessary for your app's unique needs.",
+          "Ensure patterns are accessible and intuitive.",
+          "Test patterns with users for usability."
+        ],
+        "subpages": [
+          {
+            "title": "App Icons",
+            "url": "https://developer.apple.com/design/human-interface-guidelines/patterns/app-icons",
+            "description": "Guidelines for designing app icons.",
+            "guidelines": [
+              "Design simple, recognizable icons.",
+              "Avoid text in icons.",
+              "Use metaphor that represents app function.",
+              "Ensure scalability without loss of detail."
+            ],
+            "best_practices": [
+              "Use Apple's icon template.",
+              "Test on home screen."
+            ]
+          },
+          {
+            "title": "Data Entry",
+            "url": "https://developer.apple.com/design/human-interface-guidelines/patterns/data-entry",
+            "description": "Best practices for forms and input.",
+            "guidelines": [
+              "Use appropriate keyboards for input types.",
+              "Provide inline validation.",
+              "Group fields logically.",
+              "Use autofill where possible.",
+              "Minimize required fields."
+            ],
+            "best_practices": [
+              "Implement progressive disclosure.",
+              "Test form completion time."
+            ]
+          },
+          {
+            "title": "Drag and Drop",
+            "url": "https://developer.apple.com/design/human-interface-guidelines/patterns/drag-and-drop",
+            "description": "Enabling drag and drop interactions.",
+            "guidelines": [
+              "Provide visual feedback during drag.",
+              "Support multiple item drags where appropriate.",
+              "Define drop targets clearly.",
+              "Use animations for drop acceptance/rejection."
+            ],
+            "best_practices": [
+              "Support both intra-app and inter-app drags.",
+              "Test on touch and pointer devices."
+            ]
+          },
+          {
+            "title": "Live Activities",
+            "url": "https://developer.apple.com/design/human-interface-guidelines/patterns/live-activities",
+            "description": "Dynamic updates on Lock Screen.",
+            "guidelines": [
+              "Keep information concise and timely.",
+              "Update frequently but efficiently.",
+              "Use bold text for key info.",
+              "Support Dynamic Island integration."
+            ],
+            "best_practices": [
+              "Respect battery life with updates.",
+              "Provide opt-in for users."
+            ]
+          },
+          {
+            "title": "Notifications",
+            "url": "https://developer.apple.com/design/human-interface-guidelines/patterns/notifications",
+            "description": "Designing notifications.",
+            "guidelines": [
+              "Make notifications relevant and actionable.",
+              "Respect user preferences for delivery.",
+              "Include rich media where appropriate.",
+              "Group notifications logically.",
+              "Provide quick replies."
+            ],
+            "best_practices": [
+              "Test notification fatigue.",
+              "Use critical alerts sparingly."
+            ]
+          },
+          {
+            "title": "Onboarding",
+            "url": "https://developer.apple.com/design/human-interface-guidelines/patterns/onboarding",
+            "description": "Introducing users to the app.",
+            "guidelines": [
+              "Keep onboarding short and engaging.",
+              "Highlight key features.",
+              "Allow skipping or revisiting."
+            ]
+          },
+          {
+            "title": "Search",
+            "url": "https://developer.apple.com/design/human-interface-guidelines/patterns/search",
+            "description": "Implementing search functionality.",
+            "guidelines": [
+              "Provide scope bars for filtering.",
+              "Show recent searches.",
+              "Handle no results gracefully."
+            ]
+          },
+          {
+            "title": "Sharing",
+            "url": "https://developer.apple.com/design/human-interface-guidelines/patterns/sharing",
+            "description": "Enabling content sharing.",
+            "guidelines": [
+              "Use UIActivityViewController.",
+              "Support multiple formats."
+            ]
+          }
+          // Additional patterns can be added similarly
+        ]
+      },
+      "components": {
+        "description": "Components are reusable UI elements like buttons and views.",
+        "guidelines": [
+          "Use system components for consistency.",
+          "Customize sparingly to maintain familiarity.",
+          "Ensure components are accessible.",
+          "Test components in different states."
+        ],
+        "subpages": [
+          {
+            "title": "Bars",
+            "url": "https://developer.apple.com/design/human-interface-guidelines/components/bars",
+            "description": "Navigation bars, tab bars, toolbars.",
+            "guidelines": [
+              "Use for primary navigation.",
+              "Keep items limited.",
+              "Support customization with titles and icons.",
+              "Adapt height in landscape."
+            ],
+            "subsections": {
+              "navigation_bars": {
+                "guidelines": [
+                  "Include back button automatically.",
+                  "Use large titles optionally."
+                ]
+              },
+              "tab_bars": {
+                "guidelines": [
+                  "Limit to 5 tabs.",
+                  "Use badges for notifications."
+                ]
+              }
+            }
+          },
+          {
+            "title": "Content Views",
+            "url": "https://developer.apple.com/design/human-interface-guidelines/components/content-views",
+            "description": "Scroll views, tables, collections.",
+            "guidelines": [
+              "Support dynamic content loading.",
+              "Provide clear sectioning.",
+              "Use pull-to-refresh.",
+              "Implement infinite scrolling where appropriate."
+            ],
+            "subsections": {
+              "table_views": {
+                "guidelines": [
+                  "Use sections and headers.",
+                  "Support editing modes."
+                ]
+              },
+              "collection_views": {
+                "guidelines": [
+                  "Use compositional layouts.",
+                  "Support drag reordering."
+                ]
+              }
+            }
+          },
+          {
+            "title": "Controls",
+            "url": "https://developer.apple.com/design/human-interface-guidelines/components/controls",
+            "description": "Buttons, sliders, switches.",
+            "guidelines": [
+              "Ensure accessible touch targets.",
+              "Provide state feedback.",
+              "Use consistent sizing."
+            ],
+            "subsections": {
+              "sliders": {
+                "guidelines": [
+                  "Provide value indicators.",
+                  "Support continuous or discrete values."
+                ]
+              },
+              "switches": {
+                "guidelines": [
+                  "Use for on/off states.",
+                  "Label clearly."
+                ]
+              }
+            }
+          },
+          {
+            "title": "Indicators",
+            "url": "https://developer.apple.com/design/human-interface-guidelines/components/indicators",
+            "description": "Progress indicators, activity rings.",
+            "guidelines": [
+              "Use to show status without blocking UI.",
+              "Animate smoothly.",
+              "Provide determinate progress where possible."
+            ],
+            "subsections": {
+              "progress_bars": {
+                "guidelines": [
+                  "Use for known duration tasks."
+                ]
+              },
+              "activity_indicators": {
+                "guidelines": [
+                  "Use for indeterminate tasks."
+                ]
+              }
+            }
+          },
+          {
+            "title": "Selection and Input",
+            "url": "https://developer.apple.com/design/human-interface-guidelines/components/selection-and-input",
+            "description": "Text fields, pickers, date pickers.",
+            "guidelines": [
+              "Auto-capitalize appropriately.",
+              "Validate input in real-time.",
+              "Provide clear placeholders.",
+              "Support secure text entry for passwords."
+            ],
+            "subsections": {
+              "text_fields": {
+                "guidelines": [
+                  "Use return key for submission.",
+                  "Handle keyboard dismissal."
+                ]
+              },
+              "pickers": {
+                "guidelines": [
+                  "Use inline or wheel style.",
+                  "Provide confirmation."
+                ]
+              }
+            }
+          },
+          {
+            "title": "System Experiences",
+            "url": "https://developer.apple.com/design/human-interface-guidelines/components/system-experiences",
+            "description": "Alerts, action sheets, menus.",
+            "guidelines": [
+              "Use for contextual actions.",
+              "Keep options concise.",
+              "Include destructive actions in red.",
+              "Support cancel button."
+            ],
+            "subsections": {
+              "alerts": {
+                "guidelines": [
+                  "Use for important messages.",
+                  "Limit to two buttons."
+                ]
+              },
+              "action_sheets": {
+                "guidelines": [
+                  "Present from bottom.",
+                  "Group actions."
+                ]
+              }
+            }
+          }
+          // Additional components can be added similarly
+        ]
+      }
+    }
   }
 }
